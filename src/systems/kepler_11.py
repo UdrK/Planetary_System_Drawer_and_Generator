@@ -1,7 +1,7 @@
 import system
-from solar_system import solar_radius as SR
-from solar_system import earth_radius as ER
-from solar_system import astronomical_unit as AU
+from systems.solar_system import solar_radius as SR
+from systems.solar_system import earth_radius as ER
+from systems.solar_system import astronomical_unit as AU
 
 # name, periapsis, apoapsis, radius, color, rings, ringscolor, systems
 
