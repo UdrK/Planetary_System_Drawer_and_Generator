@@ -2,8 +2,10 @@ import cairo, math, random, noise
 from PIL import Image
 from system_drawer import *
 from solar_system import solar_system
+from kepler_11 import kepler_11
+from trappist_1 import trappist_1
 
-def apply_noise(filename, noise_type='perlin'):
+def apply_noise_save(filename, noise_type='perlin'):
     if noise_type == 'perlin':
         pil_image = Image.open(filename)
         pixels = pil_image.load()
@@ -17,7 +19,7 @@ def apply_noise(filename, noise_type='perlin'):
 
 def main():
     print('Starting')
-    width = 6144
+    width = 4096
     height = 2048
     filename = '..\TEST2.png'
 
@@ -25,13 +27,13 @@ def main():
     cc = cairo.Context(ims)
 
     draw_background(cc, width, height, (.15, .15, .15))
-    draw_system(cc, solar_system, (0, height/2))
-
-    # print('Applying noise')
-    # apply_noise(filename)
+    draw_system(cc, trappist_1, (0, height/2))
 
     print('Saving file')
     ims.write_to_png(filename)
+
+    print('Applying noise')
+    apply_noise_save(filename)
 
 if __name__ == "__main__":
     main()

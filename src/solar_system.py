@@ -1,4 +1,7 @@
 import system
+solar_radius = 695510
+earth_radius = 6371
+astronomical_unit = 149597870
 grey = [138, 138, 138]      # color shared by different moons
 
 # name, periapsis, apoapsis, radius, color, rings, ringscolor, systems
@@ -11,7 +14,7 @@ earth = system.System('Earth', 147095000, 152100000, 6371, (33, 134, 207), 0, (0
 
 phobos = system.System('Phobos', 9234, 9517, 11, grey, 0, (0,0,0), [])
 deimos = system.System('Deimos', 23455, 23470, 6, grey, 0, (0,0,0), [])
-mars = system.System('Earth', 206700000, 249200000, 3389, (199, 100, 0), 0, (0,0,0), [phobos, deimos])
+mars = system.System('Mars', 206700000, 249200000, 3389, (199, 100, 0), 0, (0,0,0), [phobos, deimos])
 
 io = system.System('Io', 420000, 423400, 1821, (133, 119, 74), 0, (0,0,0), [])
 europa = system.System('Europa', 664862, 676938, 1560, (187, 178, 155), 0, (0,0,0), [])
