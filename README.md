@@ -22,3 +22,9 @@ But also some extra-solar systems:
 ## A planetary system generator
 
 WIP
+
+## Example
+
+The solar system, objects radii to scale, distances __not__ to scale
+
+![TEST4](https://user-images.githubusercontent.com/26527575/92143337-700f5b80-ee15-11ea-93e6-0b078e480021.png)
