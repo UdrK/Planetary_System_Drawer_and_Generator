@@ -18,6 +18,7 @@ Including of course:
 But also some extra-solar systems:
 * Kepler-11
 * Trappist-1
+* V1400 Centauri
 
 ## A planetary system generator
 
