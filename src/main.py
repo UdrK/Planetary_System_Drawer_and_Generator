@@ -1,7 +1,7 @@
 import cairo, random, noise
 from PIL import Image
 from system_drawer import *
-from systems.trappist_1 import trappist_1
+from systems.v1400_centauri import v1400_centauri
 
 def apply_noise_save(filename, noise_type='perlin'):
     if noise_type == 'perlin':
@@ -17,15 +17,15 @@ def apply_noise_save(filename, noise_type='perlin'):
 
 def main():
     print('Starting')
-    width = 4096
+    width = 6144
     height = 2048
-    filename = '..\TEST3.png'
+    filename = '..\TEST5.png'
 
     ims = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
     cc = cairo.Context(ims)
 
     draw_background(cc, width, height, (.15, .15, .15))
-    draw_system(cc, trappist_1, (0, height/2))
+    draw_system(cc, v1400_centauri, (0, height/2), size_moltiplicator=0.1)
 
     print('Saving file')
     ims.write_to_png(filename)

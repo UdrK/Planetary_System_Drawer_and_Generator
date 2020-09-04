@@ -56,13 +56,13 @@ def draw_object(cc, center_coordinates, radius, rgb, rings, rings_rgb):
                                 and moons.) Could be derived in some way from the radius of the object
         
 """
-def draw_system(cc, main_body, mb_coordinates, distance_coefficient=300):
+def draw_system(cc, main_body, mb_coordinates, distance_moltiplicator=300, size_moltiplicator=10):
 
     # Data needed to draw main body ------------------------------------
 
-    main_body_radius = km_to_px(main_body.radius)
+    main_body_radius = km_to_px(main_body.radius, size_moltiplicator)
     main_body_rgb = rgb_to_unit(main_body.color)
-    main_body_rings = km_to_px(main_body.rings)
+    main_body_rings = km_to_px(main_body.rings, size_moltiplicator)
     main_body_rings_rgb = rgb_to_unit(main_body.ringscolor)
 
     # drawing main body
@@ -77,15 +77,15 @@ def draw_system(cc, main_body, mb_coordinates, distance_coefficient=300):
     # cycling through the main body's satellites: planets
     for satellite in main_body.systems:
 
-        satellite_radius = km_to_px(satellite.radius)
-        satellite_rings = km_to_px(satellite.rings)
+        satellite_radius = km_to_px(satellite.radius, size_moltiplicator)
+        satellite_rings = km_to_px(satellite.rings, size_moltiplicator)
 
         satellite_and_rings_radius = satellite_radius
         if satellite_rings != 0:
             satellite_and_rings_radius = satellite_rings
 
         # this line will put the objects at a distance dependent from the size of the bodies
-        planet_x = unscaled_distance(last_satellite_x, last_satellite_radius, satellite_and_rings_radius, distance_coefficient)
+        planet_x = unscaled_distance(last_satellite_x, last_satellite_radius, satellite_and_rings_radius, distance_moltiplicator)
 
         # necessary to distance planets
         last_satellite_x = planet_x
@@ -93,7 +93,7 @@ def draw_system(cc, main_body, mb_coordinates, distance_coefficient=300):
         if satellite_rings != 0:
             last_satellite_radius = satellite_rings
 
-        draw_system(cc, satellite, (planet_x, mb_coordinates[1]), 10)
+        draw_system(cc, satellite, (planet_x, mb_coordinates[1]), distance_moltiplicator, size_moltiplicator)
 
 
 # helper functions ------------------------------------------------------
@@ -101,11 +101,11 @@ def draw_system(cc, main_body, mb_coordinates, distance_coefficient=300):
 def unscaled_distance(last_x, last_radius, this_radius, fixed):
     return last_x+last_radius+this_radius+(this_radius*0.3)+fixed
 
-def km_to_px(km):
+def km_to_px(km, size_moltiplicator):
     # 1737km = 10px
     moon_one_pixel = 1737.0
-    return (km/moon_one_pixel*10)
+    return (km / moon_one_pixel * size_moltiplicator)
 
 def rgb_to_unit(vals):
-    return (vals[0]/255.0, vals[1]/255.0, vals[2]/255.0)
+    return (vals[0] / 255.0, vals[1] / 255.0, vals[2] / 255.0)
 
