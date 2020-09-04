@@ -93,7 +93,8 @@ def draw_system(cc, main_body, mb_coordinates, distance_moltiplicator=300, size_
         if satellite_rings != 0:
             last_satellite_radius = satellite_rings
 
-        draw_system(cc, satellite, (planet_x, mb_coordinates[1]), distance_moltiplicator, size_moltiplicator)
+        # distance_moltiplicator is smaller to keep moons closer to each other
+        draw_system(cc, satellite, (planet_x, mb_coordinates[1]), 10, size_moltiplicator)
 
 
 # helper functions ------------------------------------------------------
