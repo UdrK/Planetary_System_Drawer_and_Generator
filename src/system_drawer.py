@@ -99,7 +99,7 @@ def draw_system(cc, main_body, mb_coordinates, distance_moltiplicator=300, size_
 
 # helper functions ------------------------------------------------------
 
-def unscaled_distance(last_x, last_radius, this_radius, fixed):
+def unscaled_distance(last_x, last_radius, this_radius, fixed):        # maybe fixed should be a function of this_radius
     return last_x+last_radius+this_radius+(this_radius*0.3)+fixed
 
 def km_to_px(km, size_moltiplicator):
