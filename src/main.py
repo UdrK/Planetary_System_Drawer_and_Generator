@@ -1,8 +1,7 @@
-import cairo, random, noise
+import cairo, noise
 from PIL import Image
 from system_drawer import *
-from systems.solar_system import solar_system
-from system_generator import generate_random_system
+from system_generator import *
 
 def apply_noise_save(filename, noise_type='perlin'):
     if noise_type == 'perlin':
@@ -20,12 +19,12 @@ def main():
     print('Starting')
     width = 6144
     height = 2048
-    filename = '..\TEST7.png'
+    filename = '..\TEST8.png'
 
     ims = cairo.ImageSurface(cairo.FORMAT_RGB24, width, height)
     cc = cairo.Context(ims)
 
-    system = generate_random_system()
+    system = generate_solar_like_system()
 
     draw_background(cc, width, height, (.15, .15, .15))
     draw_system(cc, system, (0, height/2), size_moltiplicator=10)
