@@ -99,12 +99,15 @@ def generate_star(type='random', color='random'):
         color: string meant to be the key of the system_generator.planet_colors dictionary
         
 """
-def generate_planet(name, type='random', color='random'):
+def generate_planet(name, type='random', color='random', rings='random'):
 
+    # color ------------------------------------------------------------------------
     if color == 'random':
         rgb_color = random.choice(planet_colors)
     else:
         rgb_color = planet_colors[int(color)]
+
+    # size --------------------------------------------------------------------------
 
     if type == 'random':
         type, size_limits = random.choice(list(planet_types.items()))
@@ -112,15 +115,23 @@ def generate_planet(name, type='random', color='random'):
     else:
         planet_size = random.uniform(planet_types[type][0], planet_types[type][1])
 
-    # TODO: add rings
+    # rings -------------------------------------------------------------------------
 
-    return System(name, 0, 0, planet_size*ER, rgb_color, 0, (0,0,0), [])
+    rings_size = 0
+    rings_color = random.choice([(110, 99, 77), (45, 200, 200)])
+    if rings == 'random':
+        if random.choice(list(range(0, 10))) == 0:    # 10% change rings
+            rings_size = random.uniform(1.25*planet_size, 3*planet_size)
+    else:
+        rings_size = rings
+
+    return System(name, 0, 0, planet_size*ER, rgb_color, rings_size*ER,  rings_color, [])
 
 """
     This method returns a procedurally generated planetary system
     
     Arguments:
-        
+        number of planets: int, self explanatory
 """
 def generate_random_system(number_of_planets=6):
 
