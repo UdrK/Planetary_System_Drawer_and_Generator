@@ -22,7 +22,9 @@ But also some extra-solar systems:
 
 ## A planetary system generator
 
-WIP
+As of now, i've implemented 2 generators:
+* Random generator: has limits as min and max sizes, and limited set of colors, but everything else is random. Produces unpleasant color palettes.
+* Solar system like generator: produces a system with 4 small bodies, 2 large bodies, 2 mediums bodies, and several smaller bodies. Uses a set of predetermined colors that play nice with the star which is random. As a few bugs, may crash.
 
 ## Example
 
