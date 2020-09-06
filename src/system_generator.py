@@ -107,6 +107,8 @@ def generate_random_system(number_of_planets=6):
     Arguments:
         number_of_planets: int, self explanatory
 """
+# todo: fix bug where color_palette['dwarf_planet'] == none
+# todo: fix bug where planets get outside of the image
 def generate_solar_like_system(number_of_planets=6):
 
     star = generate_star()
